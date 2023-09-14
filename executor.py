@@ -33,8 +33,9 @@ class Executor:
     def get_tasks(self, lab_work: str):
         try:
             return list(self.lab_works[lab_work])
-        except:
-            return [' ']
+        except KeyError:
+            return ['']
+
     @property
     def file_name(self):
         return self._file_name
