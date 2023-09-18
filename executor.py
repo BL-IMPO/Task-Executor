@@ -3,6 +3,7 @@ import subprocess
 import os
 import Lab_Works.lab_1_task_1 as l1t1
 
+
 class Executor:
 
     def __init__(self,lab_works: list[str], tasks: list[int]):
