@@ -60,7 +60,6 @@ class App(tk.Tk):
     def reset_task(self, event=None):
         self.task_cmb["values"] = self.log.get_tasks(self.lab_work_cmb.get())
         self.task_cmb.set(1)
-        print(self.lab_work_cmb.get())
 
     def file_name(self) -> str:
         return self.lab_work_cmb.get() + '_task_' + self.task_cmb.get() + '.py'
@@ -69,7 +68,10 @@ class App(tk.Tk):
         self.log.execute(self.file_name())
 
     def copy_task_code(self):
-        self.log.copying(self.file_name())
+        try:
+            self.log.copying(self.file_name())
+        except FileNotFoundError:
+            print("Chose wrong file!")
 
 
 if __name__ == '__main__':

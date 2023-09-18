@@ -1,12 +1,11 @@
 import pyperclip
 import subprocess
 import os
-import Lab_Works.lab_1_task_1 as l1t1
 
 
 class Executor:
 
-    def __init__(self,lab_works: list[str], tasks: list[int]):
+    def __init__(self, lab_works: list[str], tasks: list[int]):
 
         self.lab_works = self._init_dict(lab_works, tasks)
 
@@ -18,7 +17,14 @@ class Executor:
         return lab
 
     def execute(self, file_name: str):
-        subprocess.run(["python3", self.get_path() + file_name])
+        if os.name == "nt":
+            print("{} S-T-A-R-T {}".format("*" * 8, "*" * 9))
+            subprocess.run(["python", self.get_path() + file_name])
+            print("{} F-I-N-I-S-H {}".format("*" * 8, "*" * 8))
+        elif os.name == "posix":
+            print("{} S-T-A-R-T {}".format("*" * 8, "*" * 8))
+            subprocess.run(["python3", self.get_path() + file_name])
+            print("{} F-I-N-I-S-H {}".format("*" * 8, "*" * 8))
 
     def copying(self, file_name: str):
         self.get_path()
@@ -40,14 +46,12 @@ class Executor:
         except KeyError:
             return ['']
 
-
-
-if __name__ == '__main__':
-    n = Executor(['lab_1', 'lab_2', 'lab_3'], [15, 10, 15])
-    print(n.get_lab_works())
-    print(n.get_tasks('lab_1'))
-    n.copying('lab_1_task_1.py')
-    n.execute('lab_1_task_1.py')
-
-    n.set_file = 'lab_1_task_2'
+#
+# if __name__ == '__main__':
+#    n = Executor(['lab_1', 'lab_2', 'lab_3'], [15, 10, 15])
+#    print(n.get_lab_works())
+#    print(n.get_tasks('lab_1'))
+#    n.copying('lab_1_task_1.py')
+#    n.execute('lab_1_task_1.py')
+#    n.set_file = 'lab_1_task_2'
 
