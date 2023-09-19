@@ -38,7 +38,7 @@ class App(tk.Tk):
         # log console
         self.name_lc = (tk.Label(self.console_frame, text="Log consol.", justify="left", font=default_font))
         self.name_lc.grid(row=0, sticky="w")
-        self.log_console = tk.Entry(self.console_frame, )
+        self.log_console = tk.Entry(self.console_frame)
         self.log_console.grid(row=1, rowspan=3, sticky="wesn")
         self.log_console.configure(state="disabled")
 
