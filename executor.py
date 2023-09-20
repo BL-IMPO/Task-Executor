@@ -46,12 +46,5 @@ class Executor:
         except KeyError:
             return ['']
 
-#
-# if __name__ == '__main__':
-#    n = Executor(['lab_1', 'lab_2', 'lab_3'], [15, 10, 15])
-#    print(n.get_lab_works())
-#    print(n.get_tasks('lab_1'))
-#    n.copying('lab_1_task_1.py')
-#    n.execute('lab_1_task_1.py')
-#    n.set_file = 'lab_1_task_2'
+
 
