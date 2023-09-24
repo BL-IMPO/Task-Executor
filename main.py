@@ -40,11 +40,11 @@ class App(tk.Tk):
        #self.console_frame.grid(row=1, column=0, columnspan=2, rowspan=3)
 
         # log console
-        self.name_lc = (tk.Label(self, text="Log consol.", justify="left", font=default_font))
-        self.name_lc.grid(row=1, sticky="w")
-        self.log_console = tk.Entry(self)
-        self.log_console.grid(row=2, sticky="wesn", column=0, columnspan=2)
-        #self.log_console.configure(state="disabled")
+        #self.name_lc = (tk.Label(self, text="Log consol.", justify="left", font=default_font))
+        #self.name_lc.grid(row=1, sticky="w")
+        #self.log_console = tk.Entry(self)
+        #self.log_console.grid(row=2, sticky="wesn", column=0, columnspan=2)
+        ##self.log_console.configure(state="disabled")
 
         # button
         self.execute_btn = tk.Button(self, text="Execute", command=self.execute_task, font=default_font)
