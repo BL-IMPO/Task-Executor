@@ -3,7 +3,6 @@ from tkinter import ttk
 import os
 # LOCAL
 import executor
-from Lab_Works.settings import *
 
 
 class App(tk.Tk):
@@ -16,10 +15,10 @@ class App(tk.Tk):
         default_font = ("Comic", 9)
 
         # init Executor
-        self.log = executor.Executor(LAB_WORKS, TASKS)
+        self.log = executor.Executor()
 
         # Window Settings
-        self.geometry("600x260")
+        self.geometry("400x260")
         self.resizable(False, False)
         self.title("Task-Executor")
         self.iconphoto(False, img)
@@ -35,36 +34,22 @@ class App(tk.Tk):
 
         self.lab_work_cmb.bind("<<ComboboxSelected>>", self.reset_task)
 
-        # log console frame
-       #self.console_frame = tk.Frame(self)
-       #self.console_frame.grid(row=1, column=0, columnspan=2, rowspan=3)
-
-        # log console
-        #self.name_lc = (tk.Label(self, text="Log consol.", justify="left", font=default_font))
-        #self.name_lc.grid(row=1, sticky="w")
-        #self.log_console = tk.Entry(self)
-        #self.log_console.grid(row=2, sticky="wesn", column=0, columnspan=2)
-        ##self.log_console.configure(state="disabled")
-
         # button
-        self.execute_btn = tk.Button(self, text="Execute", command=self.execute_task, font=default_font)
-        self.execute_btn.grid(row=3, column=2, sticky="wesn")
+        self.execute_btn = tk.Button(self, text="Run", command=self.execute_task, font=default_font)
+        self.execute_btn.grid(row=1, column=0, sticky="wesn")
         self.copy_btn = tk.Button(self, text="Copy", command=self.copy_task_code, font=default_font)
-        self.copy_btn.grid(row=4, column=2, sticky="wesn")
+        self.copy_btn.grid(row=1, column=1, sticky="wesn")
 
         # configure settings
         self.grid_columnconfigure(0, minsize=200)
         self.grid_columnconfigure(1, minsize=200)
-        self.grid_columnconfigure(2, minsize=200)
-        #self.console_frame.grid_columnconfigure(0, minsize=400)
-        #self.console_frame.grid_rowconfigure(1, minsize=275)
-        #self.grid_rowconfigure(1, minsize=100)
-        self.grid_rowconfigure(3, minsize=100)
-        self.grid_rowconfigure(4, minsize=100)
+        self.grid_rowconfigure(1, minsize=100)
+        self.grid_rowconfigure(1, minsize=100)
 
     def reset_task(self, event=None):
-        self.task_cmb["values"] = self.log.get_tasks(self.lab_work_cmb.get())
-        self.task_cmb.set(1)
+        tasks = self.log.get_tasks(self.lab_work_cmb.get())
+        self.task_cmb["values"] = tasks
+        self.task_cmb.set(tasks[0])
 
     def file_name(self) -> str:
         return self.lab_work_cmb.get() + '_task_' + self.task_cmb.get() + '.py'

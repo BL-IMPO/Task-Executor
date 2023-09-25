@@ -1,9 +1,11 @@
 def half_perimetr(a: float, b: float, c: float) -> float:
-    return (a + b + c)/2
+    return (a + b + c) / 2
+
 
 def square(a: float, b: float, c: float) -> float:
     p = half_perimetr(a, b, c)
     return p * (p - a) * (p - b) * (p - c)
+
 
 def lab_3_task_13():
     a, b, c = map(float, input("Введите стороны треугольника a, b, c: ").split(" "))
