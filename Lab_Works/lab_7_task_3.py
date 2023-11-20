@@ -19,7 +19,13 @@ def sort_word(word):
 
 
 def lab_7_task_3_2():
-    s = input("Введите строку: ")
+    s = input("Введите строку: ").split()
+    new_s = ''
+
+    for i in s:
+        new_s += " " + sort_word(i)
+
+    print("Строка с отсортированными словами: ", new_s)
 
 
 if __name__ == "__main__":
